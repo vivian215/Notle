@@ -1,4 +1,4 @@
-package com.example.schedule.ui.main;
+package com.example.notle.ui.main;
 
 import androidx.arch.core.util.Function;
 import androidx.lifecycle.LiveData;

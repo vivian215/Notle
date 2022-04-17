@@ -1,4 +1,4 @@
-package com.example.schedule;
+package com.example.notle;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

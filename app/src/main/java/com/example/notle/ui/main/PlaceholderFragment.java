@@ -1,4 +1,4 @@
-package com.example.schedule.ui.main;
+package com.example.notle.ui.main;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.example.schedule.R;
+import com.example.notle.R;
 
 /**
  * A placeholder fragment containing a simple view.

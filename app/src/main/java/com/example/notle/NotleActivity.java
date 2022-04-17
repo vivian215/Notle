@@ -1,28 +1,35 @@
-package com.example.schedule;
+package com.example.notle;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
-import android.util.Log;
+import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class SchedActivity extends AppCompatActivity {
-    private SchedView schedView;
+public class NotleActivity extends AppCompatActivity {
+    private NotleView notleView;
     public TextToSpeech tts;
+    public int screenWidth;
+    public int screenHeight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("activitycheck", "oncreate");
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        //get height and width
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        screenHeight = displayMetrics.heightPixels;
+        screenWidth = displayMetrics.widthPixels;
 
         Point point = new Point();
         getWindowManager().getDefaultDisplay().getSize(point);
 
-        schedView = new SchedView(this, getResources());
-        setContentView(schedView);
+        notleView = new NotleView(this, getResources());
+        setContentView(notleView);
     }
 
     @Override
@@ -33,19 +40,19 @@ public class SchedActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        schedView.pause();
+        notleView.pause();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        schedView.pause();
+        notleView.pause();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        schedView.resume();
+        notleView.resume();
     }
 
     @Override
