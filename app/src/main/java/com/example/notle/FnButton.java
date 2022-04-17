@@ -9,6 +9,7 @@ public class FnButton extends Button {
     private RectF rect;
     private int buttonTop, buttonBottom;
 
+    //fnbutton constructor
     public FnButton(int x, int y, int width, int height, String text, int screenHeight) {
         super(x, y, width, height);
         buttonTop = screenHeight-Constants.PIANOHEIGHT-Constants.BUTTONHEIGHT;
@@ -17,6 +18,7 @@ public class FnButton extends Button {
         this.text = text;
     }
 
+    //draws the button
     public void draw(Canvas canvas, int paddingX, Paint fillPaint, Paint outlinePaint, Paint textPaint) {
         canvas.drawRect(rect, fillPaint);
         canvas.drawRect(rect, outlinePaint);

@@ -5,12 +5,14 @@ public class Board {
     private int currGuess;
     private int currBox;
 
+    //board constructor
     public Board (GuessBox[][] board) {
         this.board = board;
         currGuess = 0;
         currBox = 0;
     }
 
+    //getters and setters
     public GuessBox[][] getBoard() {
         return board;
     }
@@ -19,6 +21,7 @@ public class Board {
         return currGuess;
     }
 
+    //adds a note to the guess box when a piano key is clicked
     public void addKey (String letter) {
         if (currBox < 5) {
             board[currGuess][currBox].setLetter(letter);
@@ -26,6 +29,7 @@ public class Board {
         }
     }
 
+    //checks the guess and changes box colors after enter is clicked
     public boolean check (String[] answer) {
         boolean won = true;
         if (currBox < 5) {
@@ -59,6 +63,7 @@ public class Board {
         return won;
     }
 
+    //deletes one letter if delete is clicked
     public void delete () {
         if (currBox > 0) {
             currBox--;

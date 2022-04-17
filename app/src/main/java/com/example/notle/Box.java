@@ -9,6 +9,7 @@ public class Box {
     protected String letter;
     protected int x, y, width, height;
 
+    //box constructor
     public Box (int x, int y, String letter) {
         this.x = x;
         this.y = y;
@@ -17,6 +18,7 @@ public class Box {
         bgColor = Color.WHITE;
     }
 
+    //draws a box
     public void draw (Canvas canvas) {
         Paint outlinePaint = new Paint();
         outlinePaint.setColor(Color.BLACK);
@@ -40,6 +42,7 @@ public class Box {
         }
     }
 
+    //getters and setters
     public void setTextColor(int textColor) {
         this.textColor = textColor;
     }

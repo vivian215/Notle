@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
+        //lets player enter the level they selected
         findViewById(R.id.level1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -35,10 +35,12 @@ public class NotleView extends SurfaceView implements Runnable {
     private Thread thread;
 
     public NotleView(Context context, Resources res) {
+        //initalizes variables
         super(context);
         intent = getActivity().getIntent();
         levelNum = intent.getIntExtra("levelNum", 1);
 
+        //sets answer melody based on level
         answer = new String[]{"D", "E", "F", "G", "A"};
         melody = MediaPlayer.create(context, R.raw.notle1);
         if (levelNum == 3) {
@@ -56,6 +58,7 @@ public class NotleView extends SurfaceView implements Runnable {
         screenWidth = activity.screenWidth;
         screenHeight = activity.screenHeight;
 
+        //sets up board
         GuessBox[][] arrayBoard = new GuessBox[5][5];
         for (int i = 0; i < arrayBoard.length; i++) {
             for (int j = 0; j < arrayBoard[i].length; j++) {
@@ -66,21 +69,25 @@ public class NotleView extends SurfaceView implements Runnable {
         }
         board = new Board(arrayBoard);
 
+        //creates the three purple buttons
         int buttonTop = screenHeight - Constants.PIANOHEIGHT - Constants.BUTTONHEIGHT;
         playMelody = new FnButton(0, buttonTop, screenWidth / 3, Constants.BUTTONHEIGHT, "Play Melody!", screenHeight);
         enter = new FnButton(screenWidth / 3, buttonTop, screenWidth / 3, Constants.BUTTONHEIGHT, "Enter", screenHeight);
         delete = new FnButton(screenWidth * 2 / 3, buttonTop, screenWidth / 3, Constants.BUTTONHEIGHT, "Delete", screenHeight);
 
+        //creates the piano keys
         piano = BitmapFactory.decodeResource(getResources(), R.drawable.pianokeys);
         piano = Bitmap.createScaledBitmap(piano, screenWidth, Constants.PIANOHEIGHT, false);
         whiteKeys = new PianoKey[7];
         blackKeys = new PianoKey[5];
 
+        //creates the logo and back arrow on top
         notleName = BitmapFactory.decodeResource(getResources(), R.drawable.notlename);
         notleName = Bitmap.createScaledBitmap(notleName, screenWidth - 250, 250, false);
         backarrow = BitmapFactory.decodeResource(getResources(), R.drawable.backarrow);
         backarrow = Bitmap.createScaledBitmap(backarrow, 100, 100, false);
 
+        //end screen and paints
         blackBg = BitmapFactory.decodeResource(getResources(), R.drawable.black);
         blackBg = Bitmap.createScaledBitmap(blackBg, screenWidth, screenHeight, false);
         halfPaint = new Paint();
@@ -154,6 +161,7 @@ public class NotleView extends SurfaceView implements Runnable {
                 canvas.drawText("Congratulations!", 180, screenHeight / 2 - 20, textPaint);
             }
 
+            //draws losing screen
             if (board.getCurrGuess() == 5 && !won) {
                 lost = true;
                 canvas.drawBitmap(blackBg, 0, 0, halfPaint);
@@ -209,7 +217,8 @@ public class NotleView extends SurfaceView implements Runnable {
             case MotionEvent.ACTION_DOWN:
                 float x = event.getX();
                 float y = event.getY();
-                //clicked after winning or losing
+
+                //clicked anywhere on screen after winning or losing
                 if (won || lost) {
                     return true;
                 }
