@@ -251,10 +251,10 @@ public class NotleView extends SurfaceView implements Runnable {
     public boolean onTouchEvent(MotionEvent event) {
         boolean clicked = onPressEvent(event);
         if (clicked) {
-            Activity schedActivity = getActivity();
-            Intent intent = new Intent(schedActivity, MainActivity.class);
+            Activity notleActivity = getActivity();
+            Intent intent = new Intent(notleActivity, MainActivity.class);
             run = false;
-            schedActivity.startActivity(intent);
+            notleActivity.startActivity(intent);
         }
         return true;
     }
